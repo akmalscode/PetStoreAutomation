@@ -1,0 +1,4 @@
+03:32:42:349 [main] INFO  api.test.UserTests - ****** Creating Use Info *********
+03:32:44:430 [main] INFO  api.test.UserTests - ****** Reading User Info *********
+03:32:44:616 [main] INFO  api.test.UserTests - ****** Updated User Info *********
+03:32:44:919 [main] INFO  api.test.UserTests - ****** Deleted User Info *********

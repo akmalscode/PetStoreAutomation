@@ -1,5 +1,6 @@
 package api.test;
 
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ import io.restassured.response.Response;
 
 public class DataDrivenTest {
 
-	@Test(priority = 1, dataProvider = "data", dataProviderClass = DataProviders.class,enabled = false)
+	@Test(priority = 1, dataProvider = "data", dataProviderClass = DataProviders.class)
 	public void testPostUser(String UserID, String UserName, String FirstName, String LastName, String Email,
 			String Password, String Phone) {
 
