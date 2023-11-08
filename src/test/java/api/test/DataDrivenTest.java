@@ -1,6 +1,8 @@
 package api.test;
 
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,14 +27,14 @@ public class DataDrivenTest {
 		userPayload.setPhone(Phone);
 
 		Response response = UserEndPoints.createUser(userPayload);
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 
 	}
 
 	@Test(priority = 2, dataProvider = "userNames", dataProviderClass = DataProviders.class)
 	public void testDeletUserByName(String UserName) {
 		Response response= UserEndPoints.deleteUser(UserName);
-		Assert.assertEquals(response.getStatusCode(), 200);
+		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 		
 	}
 

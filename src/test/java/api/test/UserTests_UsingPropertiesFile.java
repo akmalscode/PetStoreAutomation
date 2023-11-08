@@ -3,22 +3,20 @@ package api.test;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
-
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
 import api.endpoints.UserEndPoints;
+import api.endpoints.UserEndPoints_UsingPropertiesFile;
 import api.payload.User;
 import io.restassured.response.Response;
 
-public class UserTests {
+public class UserTests_UsingPropertiesFile {
 
 	Faker facker;
 	User userPayload;
@@ -45,7 +43,7 @@ public class UserTests {
 	@Test(priority = 1)
  	public void testPostUser() { 
 		logger.info("****** Creating Use Info *********");
-		Response response= UserEndPoints.createUser(userPayload);
+		Response response= UserEndPoints_UsingPropertiesFile.createUser(userPayload);
 		response.then().log().all();
 		
 		AssertJUnit.assertEquals(response.getStatusCode(), 200);	
@@ -56,7 +54,7 @@ public class UserTests {
 		
 		logger.info("****** Reading User Info *********");
 		
-		Response response= UserEndPoints.readUser(this.userPayload.getUsername());
+		Response response= UserEndPoints_UsingPropertiesFile.readUser(this.userPayload.getUsername());
 		response.then().log().all();
 		AssertJUnit.assertEquals(response.statusCode(), 200);
 		
@@ -73,7 +71,7 @@ public class UserTests {
 		userPayload.setEmail(facker.internet().safeEmailAddress());
 		
 		
-		Response response=UserEndPoints.updateUser(this.userPayload.getUsername(),userPayload);
+		Response response=UserEndPoints_UsingPropertiesFile.updateUser(this.userPayload.getUsername(),userPayload);
 		response.then().log();
 		
 		AssertJUnit.assertEquals(response.getStatusCode(),200);
@@ -90,7 +88,7 @@ public class UserTests {
 		
 		logger.info("****** Deleted User Info *********");
 		
-		Response response=UserEndPoints.deleteUser(this.userPayload.getUsername());
+		Response response=UserEndPoints_UsingPropertiesFile.deleteUser(this.userPayload.getUsername());
 		AssertJUnit.assertEquals(response.getStatusCode(), 200);
 		
 	}
